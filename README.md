@@ -2,7 +2,7 @@
 Provides common extensions for Aspire projects. 
 
 ## How to use
-1. Add the `Toxic.Aspire.Extensions` nuget to your AppHost. The first version of the package version aligns with the corresponding Aspire version.
+1. Add the `Toxic.Aspire.Extensions` nuget to your AppHost. The major version number of the package version aligns with the corresponding Aspire version.
 2. Add `using Toxic.Aspire.Extensions`.
 
 ## Included
