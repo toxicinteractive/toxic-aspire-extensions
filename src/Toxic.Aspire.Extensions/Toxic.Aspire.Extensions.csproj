@@ -6,7 +6,7 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <IsPackable>true</IsPackable>
     <PackageId>Toxic.Aspire.Extensions</PackageId>
-    <Version>13.0.0</Version>
+    <Version>13.0.1</Version>
     <Company>Toxic Interactive Solutions</Company>
     <PackageTags>Aspire;Azure</PackageTags>
     <Description>Contains common extensions for Aspire projects.</Description>
