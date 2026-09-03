@@ -1,4 +1,4 @@
-# toxic-aspire-extensions
+# Toxic.Aspire.Extensions
 Provides common extensions for Aspire projects. 
 
 ## How to use
