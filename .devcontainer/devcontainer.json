@@ -1,0 +1,40 @@
+{
+  "name": "toxic-aspire-extensions",
+  "image": "mcr.microsoft.com/devcontainers/dotnet:10.0",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:latest": {},
+    "ghcr.io/devcontainers/features/azure-cli:latest": {},
+    "ghcr.io/dnegstad/devcontainer-dev-certs/devcontainer-dev-certs:latest": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode-remote.remote-containers",
+        "ms-dotnettools.csdevkit",
+        "microsoft-aspire.aspire-vscode",
+        "dnegstad.devcontainer-dev-certs-remote",
+        "EditorConfig.EditorConfig"
+      ],
+
+      "settings": {
+        "csharp.experimental.debug.hotReload": true,
+        "remote.autoForwardPorts": true,
+        "remote.autoForwardPortsSource": "hybrid",
+        "dotnet.defaultSolution": "Toxic.Aspire.Extensions.slnx"
+      }
+    }
+  },
+  "mounts": [
+    {
+      "target": "${containerWorkspaceFolder}/.az",
+      "type": "volume"
+    }
+  ],
+  "remoteEnv": {
+    "DOTNET_WATCH_RESTART_ON_RUDE_EDIT": "true",
+    "DOTNET_WATCH_SUPPRESS_LAUNCH_BROWSER": "true",
+    "AZURE_CONFIG_DIR": "${containerWorkspaceFolder}/.az",
+    "TZ": "Europe/Stockholm"
+  },
+  "postCreateCommand": "${containerWorkspaceFolder}/.devcontainer/post-create.sh"
+}

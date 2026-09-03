@@ -1,0 +1,7 @@
+.az/
+bin/
+obj/
+dotnet/
+aspire-output/
+appsettings.Local.json
+.env

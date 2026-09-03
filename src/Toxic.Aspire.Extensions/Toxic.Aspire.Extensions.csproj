@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <IsPackable>true</IsPackable>
+    <PackageId>Toxic.Aspire.Extensions</PackageId>
+    <Version>13.0.0</Version>
+    <Company>Toxic Interactive Solutions</Company>
+    <PackageTags>Aspire;Azure</PackageTags>
+    <Description>Contains common extensions for Aspire projects.</Description>
+    <RepositoryUrl>https://github.com/toxicinteractive/toxic-aspire-extensions</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="/" />
+  </ItemGroup>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.Azure.KeyVault" Version="13.5.3" />
+  </ItemGroup>
+</Project>

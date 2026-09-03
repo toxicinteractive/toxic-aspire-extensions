@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="src/Toxic.Aspire.Extensions/Toxic.Aspire.Extensions.csproj" />
+  <Project Path="src/Toxic.Aspire.Extensions.AppHost/Toxic.Aspire.Extensions.AppHost.csproj" />
+  <Project Path="src/Toxic.Aspire.Extensions.ServiceDefaults/Toxic.Aspire.Extensions.ServiceDefaults.csproj" />
+  <Project Path="src/Toxic.Aspire.Extensions.SampleApp/Toxic.Aspire.Extensions.SampleApp.csproj" />
+</Solution>
