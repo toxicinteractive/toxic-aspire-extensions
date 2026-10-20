@@ -76,7 +76,7 @@ public static class NewRelicExtensions
 
             return builder
                 .WithEnvironment("OTEL_EXPORTER_OTLP_ENDPOINT", endpoint)
-                .WithEnvironment("OTEL_SERVICE_NAME", entityName)
+                .WithEnvironment("OTEL_SERVICE_NAME", entityName ?? builder.Resource.Name)
                 .WithEnvironment("OTEL_EXPORTER_OTLP_HEADERS", apiKeyExpression);
         }
     }
