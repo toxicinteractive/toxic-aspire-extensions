@@ -61,4 +61,21 @@ public static class Extensions
                 .Single();
         }
     }
+
+    extension(IHostEnvironment environment)
+    {
+        /// <summary>
+        /// Gets the environment name in short format, e.g. "prod, stage, dev".
+        /// </summary>
+        public string? GetEnvironmentShortName()
+        {
+            return environment.EnvironmentName.ToLowerInvariant() switch
+            {
+                "development" => "dev",
+                "staging" => "stage",
+                "production" => "prod",
+                _ => null
+            };
+        }
+    }
 }

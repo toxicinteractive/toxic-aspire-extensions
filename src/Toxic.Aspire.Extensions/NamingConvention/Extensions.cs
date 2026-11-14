@@ -35,14 +35,6 @@ public static class NamingConventionExtensions
         /// <param name="workloadName">What the resource does, e.g. "cms" or "api". Can be left out.</param>
         public string GetAzureResourceName(string resourcePrefix, string projectName, string? workloadName)
         {
-            var environmentName = builder.Environment.EnvironmentName.ToLowerInvariant() switch
-            {
-                "development" => "dev",
-                "staging" => "stage",
-                "production" => "prod",
-                _ => null
-            };
-
             return string.Join(
                 '-', 
                 new string?[] 
@@ -50,7 +42,7 @@ public static class NamingConventionExtensions
                     resourcePrefix,
                     projectName,
                     workloadName,
-                    environmentName
+                    builder.Environment.GetEnvironmentShortName()
                 }
                 .Where(x => !string.IsNullOrWhiteSpace(x)));
         }
