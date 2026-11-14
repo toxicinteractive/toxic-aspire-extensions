@@ -58,20 +58,19 @@ public static class NamingConventionExtensions
         public string GetResourceNameSeparator<TResource>(TResource resource) 
             where TResource : ProvisionableResource
         {
-            var separator = string.Empty;
             var validChars = resource.GetResourceNameRequirements().ValidCharacters;
 
             if (validChars.HasFlag(ResourceNameCharacters.Hyphen))
             {
-                separator = "-";
+                return "-";
             }
 
             if (validChars.HasFlag(ResourceNameCharacters.Underscore))
             {
-                separator = "_";
+                return "_";
             }
 
-            return separator;
+            return string.Empty;
         }
     }
 }
