@@ -20,7 +20,7 @@ builder
         var resource = infra.GetProvisionableResource<ContainerApp>();
 
         // will output "ca-lrf-cms-stage" when running "aspire publish --environment Staging"
-        resource.Name = builder.GetAzureResourceName<ContainerApp>("lrf", "cms");
+        resource.Name = builder.GetAzureResourceName(resource, "lrf", "cms");
         
         resource.Template.Scale.MinReplicas = 0;
         resource.Template.Scale.MaxReplicas = 1;

@@ -15,7 +15,7 @@ public static class NamingConventionExtensions
         /// </summary>
         /// <param name="projectName">The project or client abbreviated name, e.g. "lrf" or "toxic".</param>
         /// <param name="workloadName">What the resource does, e.g. "cms" or "api". Can be left out.</param>
-        public string GetAzureResourceName<TResource>(string projectName, string? workloadName = null)
+        public string GetAzureResourceName<TResource>(TResource resource, string projectName, string? workloadName = null)
             where TResource : ProvisionableResource
         {
             if (!ResourcePrefixes.KnownTypePrefixes.TryGetValue(typeof(TResource), out var resourcePrefix))
@@ -23,7 +23,11 @@ public static class NamingConventionExtensions
                 throw new InvalidOperationException($"Couldn't find a resource prefix for {typeof(TResource).Name}, specify it explicitly instead.");
             }
 
-            return builder.GetAzureResourceName(resourcePrefix, projectName, workloadName);
+            return builder.GetAzureResourceName(
+                resourcePrefix, 
+                projectName, 
+                workloadName, 
+                builder.GetResourceNameSeparator(resource));
         }
 
         /// <summary>
@@ -33,10 +37,10 @@ public static class NamingConventionExtensions
         /// <param name="resourcePrefix">Resource abbreviation, e.g. "app" or "kv".</param>
         /// <param name="projectName">The project or client abbreviated name, e.g. "lrf" or "toxic".</param>
         /// <param name="workloadName">What the resource does, e.g. "cms" or "api". Can be left out.</param>
-        public string GetAzureResourceName(string resourcePrefix, string projectName, string? workloadName)
+        public string GetAzureResourceName(string resourcePrefix, string projectName, string? workloadName = null, string separator = "")
         {
             return string.Join(
-                '-', 
+                separator, 
                 new string?[] 
                 {
                     resourcePrefix,
@@ -45,6 +49,29 @@ public static class NamingConventionExtensions
                     builder.Environment.GetEnvironmentShortName()
                 }
                 .Where(x => !string.IsNullOrWhiteSpace(x)));
+        }
+
+        /// <summary>
+        /// Gets a valid separator according to resource name requirements.
+        /// Can return "-", "_" or empty string.
+        /// </summary>
+        public string GetResourceNameSeparator<TResource>(TResource resource) 
+            where TResource : ProvisionableResource
+        {
+            var separator = string.Empty;
+            var validChars = resource.GetResourceNameRequirements().ValidCharacters;
+
+            if (validChars.HasFlag(ResourceNameCharacters.Hyphen))
+            {
+                separator = "-";
+            }
+
+            if (validChars.HasFlag(ResourceNameCharacters.Underscore))
+            {
+                separator = "_";
+            }
+
+            return separator;
         }
     }
 }
