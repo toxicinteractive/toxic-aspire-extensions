@@ -10,7 +10,7 @@ builder
     .ExcludeFromDevelopmentManifest();
 
 builder
-    .AddProject<Projects.Toxic_Aspire_Extensions_SampleApp>("sample-app")
+    .AddDotnetProject("sample-app", "../Toxic.Aspire.Extensions.SampleApp")
     .WithExternalHttpEndpoints()
     .WithUrlForEndpoint("https", cfg => cfg.Url = $"{cfg.Url}/weatherforecast")
     .WithNewRelicTelemetry("apikey", "entity", includeInDevelopmentEnvironment: true)
